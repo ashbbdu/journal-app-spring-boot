@@ -1,11 +1,11 @@
-package something;
+package net.engineeringdigest.journalApp;
 
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class Dog {
-    public static String bark () {
+    public  String bark () {
         return  "Bhow bhow !";
     }
 }
