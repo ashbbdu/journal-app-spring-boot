@@ -2,7 +2,9 @@ package net.engineeringdigest.journalApp.controller;
 
 
 import net.engineeringdigest.journalApp.entity.JournalEntity;
+import net.engineeringdigest.journalApp.entity.UserEntity;
 import net.engineeringdigest.journalApp.service.JournalEntryService;
+import net.engineeringdigest.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,17 +20,21 @@ public class JournalControllerV2 {
     @Autowired
     private JournalEntryService journalEntryService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/list")
     public List<JournalEntity> getAll () {
         return journalEntryService.getEntries();
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<JournalEntity> create (@RequestBody JournalEntity data) {
+    @PostMapping("/create/{user_name}")
+    public ResponseEntity<JournalEntity> create (@RequestBody JournalEntity data , @PathVariable String user_name) {
         try {
-            journalEntryService.createEntry(data);
+            journalEntryService.createEntry(data , user_name);
             return new ResponseEntity<>(data , HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e );
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

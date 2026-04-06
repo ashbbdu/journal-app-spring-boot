@@ -16,9 +16,11 @@ import java.util.List;
 public class UserEntity {
     @Id
     private ObjectId id;
+
     @Indexed(unique = true)
     @NonNull
-    private String user_name;
+    private String userName;
+
     @NonNull
     private String password;
 
