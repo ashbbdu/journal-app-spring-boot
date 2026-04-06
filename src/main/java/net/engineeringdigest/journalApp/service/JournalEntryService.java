@@ -5,6 +5,7 @@ import net.engineeringdigest.journalApp.repository.JournalEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +34,12 @@ public class JournalEntryService {
         return true;
     }
 
+    public JournalEntity update (JournalEntity data) {
+//        Optional<JournalEntity> myEntry = journalEntryRepository.findById(id);
+//        if(myEntry != null) {
+//            myEntry.setContent
+//        }
+       return journalEntryRepository.save(data);
+    }
 
 }
